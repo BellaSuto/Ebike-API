@@ -17,7 +17,7 @@ import java.util.List;
 public class Usuario implements UserDetails {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false)
     private String nome;
@@ -32,11 +32,14 @@ public class Usuario implements UserDetails {
     private String numero;
     private String cidade;
     private String estado;
+    @Enumerated(EnumType.STRING)
+    private Role role;
+    public Usuario(){
 
-
+    }
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+        return List.of(new SimpleGrantedAuthority(role.name()));
     }
 
     @Override

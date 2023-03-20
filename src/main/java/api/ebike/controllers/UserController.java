@@ -2,6 +2,9 @@ package api.ebike.controllers;
 
 import api.ebike.entities.Usuario;
 import api.ebike.services.UsuarioService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,15 +13,18 @@ import java.util.List;
 @RequestMapping("/user")
 public class UserController {
 
-    private final UsuarioService usuarioService;
-
-    public UserController(UsuarioService usuarioService) {
-        this.usuarioService = usuarioService;
-    }
+    @Autowired
+    private UsuarioService usuarioService;
+    @Autowired
+    BCryptPasswordEncoder criptografia;
 
     @PostMapping("/novo")
-    public Usuario criar(Usuario user){
-        return usuarioService.create(user);
+    public void criar(Usuario user) throws Exception {
+
+        String senhaCriptografada = criptografia.encode(user.getPassword());
+        user.setSenha(senhaCriptografada);
+
+        usuarioService.create(user);
     }
     @GetMapping("/todos")
     public List<Usuario> buscarTodos(){
@@ -28,6 +34,9 @@ public class UserController {
     public Usuario buscarUm(@PathVariable("id") Long id) throws Exception {
         return usuarioService.readyOne(id);
     }
+    @DeleteMapping("/{id}")
+    public void deletePost(@PathVariable Long id) {
+        this.usuarioService.delete(id);
 
-
+    }
 }
