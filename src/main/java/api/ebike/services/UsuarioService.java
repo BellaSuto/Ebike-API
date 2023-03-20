@@ -24,7 +24,7 @@ public class UsuarioService {
         return usuarioRepository.findAll();
     }
     public Usuario readyOne(Long id) throws Exception{
-        Optional<Usuario> user = usuarioRepository.findById(id);
+        Optional<Usuario> user = this.usuarioRepository.findById(id);
 
         if (user.isEmpty()){
             throw new Exception("Usuário não encontrado!");

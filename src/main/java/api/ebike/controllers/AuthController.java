@@ -1,4 +1,4 @@
-package api.ebike.controller;
+package api.ebike.controllers;
 
 import api.ebike.dto.Login;
 import api.ebike.entities.Usuario;

@@ -1,12 +1,13 @@
-package api.ebike.controller;
+package api.ebike.controllers;
 
 import api.ebike.entities.Usuario;
 import api.ebike.services.UsuarioService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-@RestController("/user")
+import java.util.List;
+
+@RestController
+@RequestMapping("/user")
 public class UserController {
 
     private final UsuarioService usuarioService;
@@ -16,11 +17,15 @@ public class UserController {
     }
 
     @PostMapping("/novo")
-    public Usuario create(Usuario user){
+    public Usuario criar(Usuario user){
         return usuarioService.create(user);
     }
+    @GetMapping("/todos")
+    public List<Usuario> buscarTodos(){
+        return usuarioService.readyAll();
+    }
     @GetMapping("/{id}")
-    public Usuario buscarUm(Long id) throws Exception {
+    public Usuario buscarUm(@PathVariable("id") Long id) throws Exception {
         return usuarioService.readyOne(id);
     }
 

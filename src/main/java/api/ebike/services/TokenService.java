@@ -16,9 +16,15 @@ public class TokenService {
                 .withSubject(usuario.getLogin())
                 .withClaim("id", usuario.getId())
                 .withExpiresAt(LocalDateTime.now()
-                        .plusMinutes(10)
+                        .plusMinutes(5)
                         .toInstant(ZoneOffset.of("-03:00"))
                 ).sign(Algorithm.HMAC256("secreta"));
 
+    }
+
+    public String getSubject(String token) {
+
+        return JWT.require(Algorithm.HMAC256("secreta"))
+                .withIssuer("Bicicletas").build().verify(token).getSubject();
     }
 }
