@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Secured("ADMIN")
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -26,16 +27,18 @@ public class UserController {
 
         usuarioService.create(user);
     }
+    @Secured("USER")
     @GetMapping("/todos")
     public List<Usuario> buscarTodos(){
-        return usuarioService.readyAll();
+        return usuarioService.readAll();
     }
+    @Secured("USER")
     @GetMapping("/{id}")
     public Usuario buscarUm(@PathVariable("id") Long id) throws Exception {
-        return usuarioService.readyOne(id);
+        return usuarioService.readOne(id);
     }
     @DeleteMapping("/{id}")
-    public void deletePost(@PathVariable Long id) {
+    public void deletar(@PathVariable Long id) {
         this.usuarioService.delete(id);
 
     }

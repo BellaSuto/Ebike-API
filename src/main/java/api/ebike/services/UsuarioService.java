@@ -30,10 +30,10 @@ public class UsuarioService {
         return usuarioRepository.findById(user.getId()).get()
                 .getSenha();    }
 
-    public List<Usuario> readyAll(){
+    public List<Usuario> readAll(){
         return usuarioRepository.findAll();
     }
-    public Usuario readyOne(Long id) throws Exception{
+    public Usuario readOne(Long id) throws Exception{
         Optional<Usuario> user = this.usuarioRepository.findById(id);
 
         if (user.isEmpty()){
