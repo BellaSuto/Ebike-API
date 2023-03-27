@@ -32,14 +32,12 @@ public class Usuario implements UserDetails {
     private String numero;
     private String cidade;
     private String estado;
-    @Enumerated(EnumType.STRING)
-    private Role role;
-    public Usuario(){
 
-    }
+    private String role;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(role.name()));
+        return List.of(new SimpleGrantedAuthority(role));
     }
 
     @Override

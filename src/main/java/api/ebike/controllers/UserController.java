@@ -3,40 +3,35 @@ package api.ebike.controllers;
 import api.ebike.entities.Usuario;
 import api.ebike.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Secured("ADMIN")
 @RestController
-@RequestMapping("/user")
+@PreAuthorize("hasAuthority('ADMIN')")
+@RequestMapping("/v1")
 public class UserController {
 
     @Autowired
     private UsuarioService usuarioService;
-    @Autowired
-    BCryptPasswordEncoder criptografia;
 
-    @PostMapping("/novo")
-    public void criar(Usuario user) throws Exception {
 
-        String senhaCriptografada = criptografia.encode(user.getPassword());
-        user.setSenha(senhaCriptografada);
-
-        usuarioService.create(user);
+    @PostMapping("/new")
+    public Usuario criar(@RequestBody Usuario user) throws Exception {
+        return usuarioService.createUser(user);
     }
-    @Secured("USER")
-    @GetMapping("/todos")
-    public List<Usuario> buscarTodos(){
+
+    @GetMapping("/users")
+    public List<Usuario> buscarTodos() {
         return usuarioService.readAll();
     }
-    @Secured("USER")
-    @GetMapping("/{id}")
+
+    @GetMapping("/users/{id}")
     public Usuario buscarUm(@PathVariable("id") Long id) throws Exception {
         return usuarioService.readOne(id);
     }
+
     @DeleteMapping("/{id}")
     public void deletar(@PathVariable Long id) {
         this.usuarioService.delete(id);

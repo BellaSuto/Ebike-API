@@ -5,6 +5,7 @@ import api.ebike.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,18 +18,14 @@ public class UsuarioService {
     @Autowired
     BCryptPasswordEncoder criptografia;
 
-    public void create(Usuario user) throws Exception {
-        user.setSenha(criptografarSenha(user));
-        usuarioRepository.save(user);
+    @Transactional
+    public Usuario createUser(Usuario user) throws Exception {
+        System.out.println(user.getNome());
+        if (user.getSenha() != null) {
+            user.setSenha(criptografia.encode(user.getSenha()));
+            return usuarioRepository.save(user);
+        } else throw new Exception("Senha obrigatória!");
     }
-
-    private String criptografarSenha(Usuario user) throws Exception {
-        if(user.getSenha() == "")
-            return new BCryptPasswordEncoder().encode(user.getSenha());
-        if (user.getSenha() == null)
-            throw new Exception("Senha obrigatória!");
-        return usuarioRepository.findById(user.getId()).get()
-                .getSenha();    }
 
     public List<Usuario> readAll(){
         return usuarioRepository.findAll();
