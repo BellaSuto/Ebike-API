@@ -26,12 +26,6 @@ public class Usuario implements UserDetails {
     private String login;
     @Column(nullable = false)
     private String senha;
-    @Column(nullable = false)
-    private int cep;
-    private String rua;
-    private String numero;
-    private String cidade;
-    private String estado;
 
     private String role;
 

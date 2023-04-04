@@ -20,7 +20,6 @@ public class UsuarioService {
 
     @Transactional
     public Usuario createUser(Usuario user) throws Exception {
-        System.out.println(user.getNome());
         if (user.getSenha() != null) {
             user.setSenha(criptografia.encode(user.getSenha()));
             return usuarioRepository.save(user);
