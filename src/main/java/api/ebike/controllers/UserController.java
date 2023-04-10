@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @PreAuthorize("hasAuthority('ADMIN')")
-@RequestMapping("/v1")
+@RequestMapping("/v1/users")
 public class UserController {
 
     @Autowired
@@ -22,12 +22,12 @@ public class UserController {
         return usuarioService.createUser(user);
     }
 
-    @GetMapping("/users")
+    @GetMapping()
     public List<Usuario> buscarTodos() {
         return usuarioService.readAll();
     }
 
-    @GetMapping("/users/{id}")
+    @GetMapping("/{id}")
     public Usuario buscarUm(@PathVariable("id") Long id) throws Exception {
         return usuarioService.readOne(id);
     }

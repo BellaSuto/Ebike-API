@@ -25,6 +25,10 @@ public class Configurations {
     @Autowired
     private FilterToken filter;
 
+/*    private static final String[] USER ={"/v1/locacao"};
+    private static final String[] ADMIN = {"/v1/bike/**",
+            ""};*/
+
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http.csrf().disable()

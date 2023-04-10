@@ -34,7 +34,7 @@ public class FilterToken extends OncePerRequestFilter {
             token = authorizationHeader.replace("Bearer ", "");
             var subject = this.tokenService.getSubject(token);
 
-            var usuario = this.usuarioRepository.findByLogin(subject);
+            var usuario = this.usuarioRepository.findByUsername(subject);
 
             var authentication = new UsernamePasswordAuthenticationToken(usuario,
                     null, usuario.getAuthorities());

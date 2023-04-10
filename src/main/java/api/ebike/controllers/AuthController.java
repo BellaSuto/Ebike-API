@@ -22,8 +22,8 @@ public class AuthController {
     @PostMapping("/login")
     public  String login(@RequestBody Login login){
         UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
-        new UsernamePasswordAuthenticationToken(login.login(),
-                login.senha());
+        new UsernamePasswordAuthenticationToken(login.username(),
+                login.password());
 
         Authentication authenticate = this.authenticationManager
                 .authenticate(usernamePasswordAuthenticationToken);

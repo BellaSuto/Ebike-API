@@ -7,6 +7,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 
@@ -14,7 +16,10 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "usuarios")
-public class Usuario implements UserDetails {
+public class Usuario implements UserDetails, Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,11 +28,13 @@ public class Usuario implements UserDetails {
     private String nome;
     private int cpf;
     @Column(nullable = false)
-    private String login;
+    private String username;
     @Column(nullable = false)
     private String senha;
 
     private String role;
+    @Embedded
+    private Endereco endereco;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -41,7 +48,7 @@ public class Usuario implements UserDetails {
 
     @Override
     public String getUsername() {
-        return login;
+        return username;
     }
 
     @Override

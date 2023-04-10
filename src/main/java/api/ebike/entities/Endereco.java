@@ -6,16 +6,23 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Entity
-@Table(name = "enderecos")
+@Embeddable
 public class Endereco {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @Column(nullable = false)
+
     private int cep;
-    private String rua;
-    private String numero;
-    private String cidade;
-    private String estado;
+    private String logradouro;
+    private String bairro;
+    private String localidade;
+    private String uf;
+
+    public Endereco(int cep, String logradouro, String bairro, String localidade, String uf) {
+        this.cep = cep;
+        this.logradouro = logradouro;
+        this.bairro = bairro;
+        this.localidade = localidade;
+        this.uf = uf;
+    }
+
+    public Endereco() {
+    }
 }
