@@ -4,6 +4,8 @@ import api.ebike.client.CepResponse;
 import api.ebike.entities.Endereco;
 import api.ebike.entities.Usuario;
 import api.ebike.repositories.UsuarioRepository;
+import jakarta.persistence.EntityNotFoundException;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -49,6 +51,21 @@ public class UsuarioService {
             throw new Exception("Usuário não encontrado!");
         }
         return user.get();
+    }
+    public Usuario update(Usuario user){
+        Long id = user.getId();
+        Optional<Usuario> optionalUser = usuarioRepository.findById(id);
+
+        if (optionalUser.isEmpty()) {
+            throw new EntityNotFoundException("Usuário não encontrado com o ID informado");
+        }
+
+        Usuario existingUser = optionalUser.get();
+
+        // Copia as propriedades do objeto 'user' para o objeto 'existingUser'
+        BeanUtils.copyProperties(user, existingUser);
+
+        return usuarioRepository.save(existingUser);
     }
     public void delete (Long id){
         usuarioRepository.deleteById(id);

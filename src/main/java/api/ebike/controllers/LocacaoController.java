@@ -17,14 +17,14 @@ public class LocacaoController {
     @Autowired
     private LocacaoService service;
 
-    @PostMapping("/alugar")
+    @PostMapping("/location")
     public ResponseEntity<String> alugar(@RequestBody Locacao locacao) throws Exception{
         Locacao aluguel = service.alugar(locacao);
         String mensagem = "Aluguel realizado com sucesso!" +" id: "+aluguel.getId();
 
         return ResponseEntity.ok(mensagem);
     }
-    @GetMapping("/locacoes")
+    @GetMapping("/locations")
     public List<Locacao> ativos(){
         return service.alugueisAtivos();
     }

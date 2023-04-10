@@ -3,6 +3,7 @@ package api.ebike.controllers;
 import api.ebike.entities.Bicicleta;
 import api.ebike.services.BicicletaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,6 +30,12 @@ public class BikeController {
     @GetMapping("/{id}")
     public Bicicleta buscarUm(@PathVariable("id") Long id) throws Exception {
         return bicicletaService.readOne(id);
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<Bicicleta> atualizarUBicicleta(@PathVariable Long id, @RequestBody Bicicleta bike) {
+        bike.setId(id);
+        Bicicleta updatedBike = bicicletaService.update(bike);
+        return ResponseEntity.ok(updatedBike);
     }
 
     @DeleteMapping("/{id}")

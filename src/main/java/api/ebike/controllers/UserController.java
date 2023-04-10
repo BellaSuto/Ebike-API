@@ -34,6 +34,12 @@ public class UserController {
     public Usuario buscarUm(@PathVariable("id") Long id) throws Exception {
         return usuarioService.readOne(id);
     }
+    @PutMapping("/{id}")
+    public ResponseEntity<Usuario> atualizarUsuario(@PathVariable Long id, @RequestBody Usuario user) {
+        user.setId(id);
+        Usuario updatedUser = usuarioService.update(user);
+        return ResponseEntity.ok(updatedUser);
+    }
 
     @DeleteMapping("/{id}")
     public void deletar(@PathVariable Long id) {
