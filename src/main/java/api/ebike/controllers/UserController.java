@@ -3,6 +3,7 @@ package api.ebike.controllers;
 import api.ebike.entities.Usuario;
 import api.ebike.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,8 +19,10 @@ public class UserController {
 
 
     @PostMapping("/new")
-    public Usuario criar(@RequestBody Usuario user) throws Exception {
-        return usuarioService.createUser(user);
+    public ResponseEntity<Usuario> criar(@RequestBody Usuario user) throws Exception {
+        Usuario usuario = usuarioService.createUser(user);
+
+        return ResponseEntity.ok(usuario);
     }
 
     @GetMapping()
