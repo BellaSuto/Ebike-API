@@ -1,0 +1,495 @@
+{
+	"info": {
+		"_postman_id": "da45bcd5-8ec4-409b-84fa-eaf0c3f6a0f7",
+		"name": "Ebike-java",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23968234"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "buscar um",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2EiLCJpc3MiOiJVc3VhcmlvcyIsImlkIjoxLCJleHAiOjE2Nzk5Mzk2MTJ9.0Yfebg4ah3GXHqewwNGO-ukstYhY44E-tpuqdhRve9k",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/v1/users/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "criar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2EiLCJpc3MiOiJVc3VhcmlvcyIsImlkIjoxLCJleHAiOjE2ODEyMjU3MDB9.NsgN7CORH9BmdW3xG__c1MdXJWywUviTDyM0SLjKwKI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"nome\": \"Ada lovelace\",\r\n        \"cpf\": 123,\r\n        \"username\": \"ada\",\r\n        \"senha\": \"123\",\r\n        \"role\": \"USER\",\r\n        \"endereco\": {\r\n            \"cep\": \"68904383\",\r\n            \"logradouro\": \"\",\r\n            \"bairro\": \"\",\r\n            \"localidade\": \"\",\r\n            \"uf\": \"\"\r\n        }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/v1/users/new",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"users",
+								"new"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscar todos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2EiLCJpc3MiOiJVc3VhcmlvcyIsImlkIjoxLCJleHAiOjE2ODEyMjQ0MTZ9._lfCIhWW-8UEjfm43IoS-IxOiC-w_0xTmdQiLSBGAXU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/v1/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2EiLCJpc3MiOiJVc3VhcmlvcyIsImlkIjoxLCJleHAiOjE2ODEyMjU3MDB9.NsgN7CORH9BmdW3xG__c1MdXJWywUviTDyM0SLjKwKI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/v1/users/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "atualizar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2EiLCJpc3MiOiJVc3VhcmlvcyIsImlkIjoxLCJleHAiOjE2ODExNTE4OTF9.12v3-bXIdVhHTYzEKhlZRbijrWjvp2DI9rcuGAKYN5Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"nome\": \"Ada lovelace\",\r\n        \"cpf\": 123,\r\n        \"username\": \"ada\",\r\n        \"senha\": \"123\",\r\n        \"role\": \"USER\",\r\n        \"endereco\": {\r\n            \"cep\": \"01025020\",\r\n            \"logradouro\": \"\",\r\n            \"bairro\": \"\",\r\n            \"localidade\": \"\",\r\n            \"uf\": \"\"\r\n        }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/v1/users/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"users",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Locação",
+			"item": [
+				{
+					"name": "alugar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZGEiLCJpc3MiOiJVc3VhcmlvcyIsImlkIjoyLCJleHAiOjE2ODEyMjEzNjN9.iNhTLBsjVHYczNCcvq8ZDRhindDMIe6kmyh3pHq50vQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dataInicio\": \"\",\r\n    \"dataFinal\": \"\",\r\n    \"pagameto\": \"CREDITO\",\r\n    \"bikes\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/v1/location",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"location"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "locacoes ativas",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZGEiLCJpc3MiOiJVc3VhcmlvcyIsImlkIjoyLCJleHAiOjE2ODEyMjMyNDZ9.2MZi241Nl7p29ku7xJofmRSBFbnQsjA5sMdaIHJimNs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/v1/locations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"locations"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bike",
+			"item": [
+				{
+					"name": "buscar todos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2EiLCJpc3MiOiJVc3VhcmlvcyIsImlkIjoxLCJleHAiOjE2ODEyMjQ0MTZ9._lfCIhWW-8UEjfm43IoS-IxOiC-w_0xTmdQiLSBGAXU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/v1/bike",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"bike"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cadastrar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2EiLCJpc3MiOiJVc3VhcmlvcyIsImlkIjoxLCJleHAiOjE2ODEyMjQ0MTZ9._lfCIhWW-8UEjfm43IoS-IxOiC-w_0xTmdQiLSBGAXU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n        \"cor\": \"Rosa\",\r\n        \"valorAluguel\": 25.00,\r\n        \"marca\": \"Caloi\",\r\n        \"modelo\": \"Aro 29\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/v1/bike/new",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"bike",
+								"new"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscar um",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/v1/bike/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"bike",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "atualizar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2EiLCJpc3MiOiJVc3VhcmlvcyIsImlkIjoxLCJleHAiOjE2ODEyMjQ0MTZ9._lfCIhWW-8UEjfm43IoS-IxOiC-w_0xTmdQiLSBGAXU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n        \"cor\": \"Verde\",\r\n        \"valorAluguel\": 30.00,\r\n        \"marca\": \"Focus\",\r\n        \"modelo\": \"Aro 29\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/v1/bike/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"bike",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2EiLCJpc3MiOiJVc3VhcmlvcyIsImlkIjoxLCJleHAiOjE2ODEyMjQ0MTZ9._lfCIhWW-8UEjfm43IoS-IxOiC-w_0xTmdQiLSBGAXU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/v1/bike/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"bike",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"isa\",\r\n    \"password\": \"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "testar cep",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2EiLCJpc3MiOiJVc3VhcmlvcyIsImlkIjoxLCJleHAiOjE2ODExNDc5NzF9.SpNIb1WxXLtx2B74p4BmdQdmqL38q_jnU57Cl3wi9EI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/cep/endereco?cep=68904383",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cep",
+						"endereco"
+					],
+					"query": [
+						{
+							"key": "cep",
+							"value": "68904383"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
