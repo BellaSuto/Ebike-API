@@ -1,6 +1,6 @@
 # E-Bike
 ## Descrição
-### A aplicação consiste em uma  api de uma aplicação para alugar bicicletas
+### O projeto consiste em uma  api de uma aplicação para alugar bicicletas
 
 
 ## ⚙️ Tecnologias utilizadas:
