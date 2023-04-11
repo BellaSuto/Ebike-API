@@ -62,12 +62,13 @@ public class UsuarioService {
 
         Usuario existingUser = optionalUser.get();
 
-        // Copia as propriedades do objeto 'user' para o objeto 'existingUser'
+        //Copia as propriedades do objeto 'user' para o objeto 'existingUser'
         BeanUtils.copyProperties(user, existingUser);
 
         return usuarioRepository.save(existingUser);
     }
-    public void delete (Long id){
+    public boolean delete (Long id){
         usuarioRepository.deleteById(id);
+        return true;
     }
 }

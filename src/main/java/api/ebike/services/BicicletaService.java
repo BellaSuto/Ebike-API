@@ -1,7 +1,6 @@
 package api.ebike.services;
 
 import api.ebike.entities.Bicicleta;
-import api.ebike.entities.Usuario;
 import api.ebike.repositories.BicicletaRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.BeanUtils;
@@ -45,8 +44,9 @@ public class BicicletaService {
         return repository.save(existingBike);
 
     }
-    public void delete (Long id){
+    public boolean delete (Long id){
         repository.findAll();
+        return true;
     }
 
 }

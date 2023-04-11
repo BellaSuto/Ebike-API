@@ -3,6 +3,7 @@ package api.ebike.controllers;
 import api.ebike.entities.Usuario;
 import api.ebike.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -42,8 +43,12 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
-    public void deletar(@PathVariable Long id) {
-        this.usuarioService.delete(id);
+    public ResponseEntity<String> deletar(@PathVariable Long id) {
+        if (usuarioService.delete(id)){
+            return ResponseEntity.ok("Usuário excluído com sucesso!");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuário não encontrado.");
+        }
 
     }
 }

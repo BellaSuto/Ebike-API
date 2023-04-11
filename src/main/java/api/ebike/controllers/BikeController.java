@@ -3,6 +3,7 @@ package api.ebike.controllers;
 import api.ebike.entities.Bicicleta;
 import api.ebike.services.BicicletaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -39,8 +40,12 @@ public class BikeController {
     }
 
     @DeleteMapping("/{id}")
-    public void deletar(@PathVariable Long id) {
-        this.bicicletaService.delete(id);
+    public ResponseEntity<String> deletar(@PathVariable Long id) {
+        if (bicicletaService.delete(id)){
+            return ResponseEntity.ok("Bicicleta excluído com sucesso!");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Bicicleta não encontrado.");
+        }
 
     }
 }

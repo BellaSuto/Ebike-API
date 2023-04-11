@@ -24,8 +24,10 @@ public class LocacaoController {
 
         return ResponseEntity.ok(mensagem);
     }
+
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/locations")
-    public List<Locacao> ativos(){
+    public List<Locacao> ativos() {
         return service.alugueisAtivos();
     }
 }
