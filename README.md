@@ -38,12 +38,3 @@ $ $2a$10$oVY17LMnx7czlNmPK9sV8.gQArVbEZAERB8JAHj6HmFbJEUI09z3G
 |POST|v1/location
 |GET|v1/locations
 
-<style>
-table {
-  background-color: #f1f1;
-}
-td {
-  padding: 10px;
-}
-</style>
-
