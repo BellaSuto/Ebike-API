@@ -13,6 +13,10 @@
 
 
 ## 🔌 Executando
+É necessário possuir um usuário previamente cadastrado (de preferência com role Admin) para poder fazer o login. O login gera um token que dará acesso as rotas da aplicação
+Níveis de acesso:
+- **Admin** tem acesso as rotas de users e bikes
+- **User** só tem acesso as rotas de location
 ```bash
 # a senha criptografada abaixo corresponde a "123"
 
