@@ -26,15 +26,15 @@ $ $2a$10$oVY17LMnx7czlNmPK9sV8.gQArVbEZAERB8JAHj6HmFbJEUI09z3G
 | --- | --- |
 | POST| v1/users/new 
 | GET | v1//users
-|GET|v1/users/<id>
-|PUT|v1/users/<id>
-|DELETE|v1/users/<id>
+|GET|v1/users/(id)
+|PUT|v1/users/(id)
+|DELETE|v1/users/(id)
 |POST|/login
 |POST|v1/bikes/new
 |GET|v1/bikes
-|GET|v1/bikes/<id>
-|PUT|v1/bikes/<id>
-|DELETE|v1/bikes/<id>
+|GET|v1/bikes/(id)
+|PUT|v1/bikes/(id)
+|DELETE|v1/bikes/(id)
 |POST|v1/location
 |GET|v1/locations
 
