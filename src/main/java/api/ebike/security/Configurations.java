@@ -18,16 +18,11 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity(
-        jsr250Enabled = true,
-        prePostEnabled = true)
+        jsr250Enabled = true)
 public class Configurations {
-
     @Autowired
     private FilterToken filter;
 
-/*    private static final String[] USER ={"/v1/locacao"};
-    private static final String[] ADMIN = {"/v1/bike/**",
-            ""};*/
 
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {

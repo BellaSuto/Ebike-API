@@ -1,6 +1,7 @@
 package api.ebike.controllers;
 
 import api.ebike.entities.Bicicleta;
+import api.ebike.exceptions.BicicletaNaoEncontradaException;
 import api.ebike.services.BicicletaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,8 +20,15 @@ public class BikeController {
 
 
     @PostMapping("/new")
-    public Bicicleta criar(@RequestBody Bicicleta bike) throws Exception {
-        return bicicletaService.create(bike);
+    public ResponseEntity<Bicicleta>criar(@RequestBody Bicicleta bike) throws Exception {
+        try { if (bike != null) {
+            var bikeCriada = bicicletaService.create(bike);
+            return ResponseEntity.status(HttpStatus.CREATED).body(bikeCriada);
+        }
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
+        }
+        return null;
     }
 
     @GetMapping()
@@ -30,22 +38,37 @@ public class BikeController {
 
     @GetMapping("/{id}")
     public Bicicleta buscarUm(@PathVariable("id") Long id) throws Exception {
-        return bicicletaService.readOne(id);
+        try {
+            return bicicletaService.readOne(id);
+        }catch (BicicletaNaoEncontradaException e){
+            throw new BicicletaNaoEncontradaException();
+        }
     }
+
     @PutMapping("/{id}")
-    public ResponseEntity<Bicicleta> atualizarUBicicleta(@PathVariable Long id, @RequestBody Bicicleta bike) {
-        bike.setId(id);
-        Bicicleta updatedBike = bicicletaService.update(bike);
-        return ResponseEntity.ok(updatedBike);
+    public ResponseEntity<Bicicleta> atualizarUBicicleta(@PathVariable Long id, @RequestBody Bicicleta bike) throws Exception {
+        try {
+            Long bikeEncontrada = bicicletaService.readOne(id).getId();
+            bike.setId(bikeEncontrada);
+            Bicicleta updatedBike = bicicletaService.update(bike);
+            return ResponseEntity.ok(updatedBike);
+        } catch (BicicletaNaoEncontradaException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deletar(@PathVariable Long id) {
-        if (bicicletaService.delete(id)){
-            return ResponseEntity.ok("Bicicleta excluído com sucesso!");
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Bicicleta não encontrado.");
-        }
+        try {
+            Long bikeEncontrada = bicicletaService.readOne(id).getId();
+            bicicletaService.delete(bikeEncontrada);
 
+        } catch (BicicletaNaoEncontradaException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Bicicleta não encontrada.");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return ResponseEntity.ok("Bicicleta excluído com sucesso!");
     }
+    
 }
