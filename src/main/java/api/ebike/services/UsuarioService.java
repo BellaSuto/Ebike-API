@@ -20,10 +20,12 @@ public class UsuarioService {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
-    @Autowired
-    BCryptPasswordEncoder criptografia;
+
     @Autowired
     private CepService cepService;
+
+    @Autowired
+    private BCryptPasswordEncoder criptografia;
 
     @CrossOrigin
     @Transactional
@@ -67,8 +69,7 @@ public class UsuarioService {
 
         return usuarioRepository.save(existingUser);
     }
-    public boolean delete (Long id){
+    public void delete (Long id){
         usuarioRepository.deleteById(id);
-        return true;
     }
 }

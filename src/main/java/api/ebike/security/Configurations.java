@@ -2,6 +2,7 @@ package api.ebike.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -19,6 +20,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 @EnableMethodSecurity(
         jsr250Enabled = true)
+@ComponentScan(basePackages = "api.ebike.security")
 public class Configurations {
     @Autowired
     private FilterToken filter;
@@ -43,7 +45,7 @@ public class Configurations {
     }
 
     @Bean
-    public PasswordEncoder passwordEnconder() {
+    public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 }
